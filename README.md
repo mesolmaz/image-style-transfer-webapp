@@ -1,6 +1,6 @@
 # Artistic Style Transfer Web Application
 
-![grace_hopper_styled](static/images/examples/grace_hopper.jpg)
+![grace_hopper_styled](static/images/examples/readme.jpg)
 
 In this project, I built a web application that uses the pre-trained deep learning model in [TensorFlow_Hub] (https://www.tensorflow.org/hub/tutorials/tf2_arbitrary_image_stylization) and outputs artistic stylizations on images of choice.
 
