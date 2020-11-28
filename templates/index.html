@@ -6,7 +6,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!-- <meta http-equiv="X-UA-Compatible" content="ie=edge"> -->
   <title>Artistic Style Transfer</title>
-  <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous"> -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
   
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -18,6 +17,26 @@
 
 <body>
 
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
+      <div class="container">
+        <a class="navbar-brand" href="/">Have Fun</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="/">Home
+                <span class="sr-only">(current)</span>
+              </a>
+            </li>
+
+          </ul>
+        </div>
+      </div>
+    </nav>
+
       <div class="container-fluid text-center">
         <div class="jumbotron">
           <h1 class="display-4">Artistic Style Transfer</h1>
@@ -28,73 +47,63 @@
         </div>
     
         <div class="row">
-          <h2 class="display-6">Step 1: Upload Content Image</h2>
-    
-          <!-- <div class="container">
-            <div class="col-md-6">
-                <div class="form-group">
-                    <label>Upload Image</label>
-                    <div class="input-group">
-                        <span class="input-group-btn">
-                            <span class="btn btn-default btn-file">
-                                <p>Browse… <input type="file" id="imgInp"></p>
-                                <p><input type="submit" value="Submit"></p>
-                            </span>
-                        </span>
-                        <input type="text" class="form-control" readonly>
-                    </div>
-                    <img id='img-upload'/>
-                </div>
-            </div>
-          </div> -->
+          <div class="col-sm"><h2 class="display-6">Step 1: Upload Content Image</h2></div>
           
-          <form method="POST" action="" enctype="multipart/form-data">
-            <p><input type="file" name="img_file" accept=".jpg,.png"></p>
-            <p><input type="submit" value="Submit"></p>
-          </form>
-    
-          <!-- Display Image -->
-            {% if filename %}
-            <img src="{{filename}}" alt="alt">
-            {% endif %}
-    
+        </div>
+
+        <div class="row justify-content-center">
+          <div class="col-sm">
+            <form class="md-form" method="POST" action="" enctype="multipart/form-data">
+              <p><input class="btn btn-outline-primary" type="file" name="img_file" accept=".jpg,.png"></p>
+              <p><input class="btn btn-primary btn-lg" type="submit" value="Submit"></p>
+            </form>
+                <!-- Display Image -->
+                {% if filename %}
+                <img src="{{filename}}" alt="content image" class="img-thumbnail">
+                {% endif %}
+          </div>
         </div>
         
           <hr>
-        <div class="row">
+        <div class="row justify-content-center">
     
           <h2 class="display-6">Step 2: Select Style Image</h2>
-    
-            <select class="image-picker show-html">
-              <option data-img-src="../static/images/style/amadeo_cardoso.jpg" data-img-class="first" data-img-alt="Page 1" value="1">  amadeo_cardoso  </option>
-              <option data-img-src="../static/images/style/amadeo_style_life.jpg" data-img-alt="Page 2" value="2">  Page 2  </option>
-              <option data-img-src="../static/images/style/derkovits_woman_head.jpg" data-img-alt="Page 3" value="3">  Page 3  </option>
-              <option data-img-src="../static/images/style/derkovtis_talig.jpg" data-img-alt="Page 4" value="4">  Page 4  </option>
-              <option data-img-src="../static/images/style/fire.jpg" data-img-alt="Page 5" value="5">  Page 5  </option>
-              <option data-img-src="../static/images/style/hubble_pillars_of_creation.jpg" data-img-alt="Page 6" value="6">  Page 6  </option>
-              <option data-img-src="../static/images/style/kanagawa_great_wave.jpg" data-img-alt="Page 7" value="7">  Page 7  </option>
-              <option data-img-src="../static/images/style/kandinsky_composition_7.jpg" data-img-alt="Page 8" value="8">  Page 8  </option>
-              <option data-img-src="../static/images/style/munch_scream.jpg" data-img-alt="Page 9" value="9">  Page 9  </option>
-              <option data-img-src="../static/images/style/picasso_bottle_of_rum.jpg" data-img-alt="Page 10" value="10"> Page 10 </option>
-              <option data-img-src="../static/images/style/picasso_demoiselles_avignon.jpg" data-img-alt="Page 11" value="11"> Page 11 </option>
-              <option data-img-src="../static/images/style/picasso_violin.jpg" data-img-alt="Page 12" data-img-class="12" value="12"> Page 12 </option>
-              <option data-img-src="../static/images/style/turner_nantes.jpg" data-img-alt="Page 13" data-img-class="13" value="13"> Page 13 </option>
-              <option data-img-src="../static/images/style/van_gogh_starry_night.jpg" data-img-alt="Page 14" data-img-class="14" value="14"> Page 14 </option>
-            </select>
-    
         
-    
         </div>
-        <hr>
+
         
-          <div class="row">
-            <h2 class="display-6">Step 3: Click on "Create Art" at the top</h2>
-      
+        <div class="row justify-content-center">
+            <select class="image-picker show-html">
+              <option data-img-src="../static/images/style/amadeo_cardoso.jpg" data-img-class="first" data-img-alt="Page 1" value="1"> Landscape with black figure - Amadeo de Souza-Cardoso  </option>
+              <option data-img-src="../static/images/style/amadeo_style_life.jpg" data-img-alt="Page 2" value="2">  Still-life of the objects - Amadeo de Souza-Cardoso  </option>
+              <option data-img-src="../static/images/style/derkovits_woman_head.jpg" data-img-alt="Page 3" value="3"> Head of a woman - Gyula Derkovits  </option>
+              <option data-img-src="../static/images/style/derkovtis_talig.jpg" data-img-alt="Page 4" value="4">  Taligás - Gyula Derkovits  </option>
+              <option data-img-src="../static/images/style/fire.jpg" data-img-alt="Page 5" value="5">  Large Bonfire  </option>
+              <option data-img-src="../static/images/style/hubble_pillars_of_creation.jpg" data-img-alt="Page 6" value="6">  The Pillars of Creation - Hubble Telescope   </option>
+              <option data-img-src="../static/images/style/kanagawa_great_wave.jpg" data-img-alt="Page 7" value="7">  The Great Wave of Kanagawa - Katsushika Hokusai  </option>
+              <option data-img-src="../static/images/style/kandinsky_composition_7.jpg" data-img-alt="Page 8" value="8">  Composition VII - Wassily Kandinsky  </option>
+              <option data-img-src="../static/images/style/munch_scream.jpg" data-img-alt="Page 9" value="9">  The Scream - Edvard Munch  </option>
+              <option data-img-src="../static/images/style/picasso_bottle_of_rum.jpg" data-img-alt="Page 10" value="10"> Bottle of Rum - Pablo Picasso </option>
+              <option data-img-src="../static/images/style/picasso_demoiselles_avignon.jpg" data-img-alt="Page 11" value="11"> Les Demoiselles d'Avignon - Pablo Picasso </option>
+              <option data-img-src="../static/images/style/picasso_violin.jpg" data-img-alt="Page 12" data-img-class="12" value="12"> Violin- Pablo Picasso </option>
+              <option data-img-src="../static/images/style/turner_nantes.jpg" data-img-alt="Page 13" data-img-class="13" value="13"> Île Feydeau, Nantes - William Turner </option>
+              <option data-img-src="../static/images/style/van_gogh_starry_night.jpg" data-img-alt="Page 14" data-img-class="14" value="14"> The Starry Night - Van Gogh </option>
+            </select>
+
               
+              
+        </div>      
+        
+
+
+        <hr>
+
+          <div class="row justify-content-center">
+            <h2 class="display-6">Step 3: Click on "Create Art" at the top</h2>
           </div>
-          <hr>
-    
-    
+
+        <hr>
+
       </div>
 
 
